@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Catalog from './Catalog';
 import ShippingMethods from './ShippingMethods';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 
 export default class App extends Component {
   render() {
@@ -17,10 +17,10 @@ export default class App extends Component {
             </ul>
           </nav>
         </header>
-        <Switch>
-          <Route exact path='/' component={Catalog} />
-          <Route path='/shippingMethods' component={ShippingMethods} />
-        </Switch>
+        <Routes>
+          <Route path='/' element={<Catalog />} />
+          <Route path='/shippingMethods/*' element={<ShippingMethods />} />
+        </Routes>
       </div>
     );
   }
