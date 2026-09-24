@@ -1,20 +1,24 @@
 import React from 'react';
 import ShippingMethod from './ShippingMethod';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 
-export default class ShippingMethods extends React.Component {
-  renderShippingMethodList() {
-    return <ul>
+function ShippingMethodList() {
+  return (
+    <ul>
       <li><Link to="/shippingMethods/ECO">Economic delivery</Link></li>
       <li><Link to="/shippingMethods/STD">Standard delivery</Link></li>
       <li><Link to="/shippingMethods/EXP">Express delivery</Link></li>
-    </ul>;
-  }
+    </ul>
+  );
+}
 
+export default class ShippingMethods extends React.Component {
   render() {
-    return <Switch>
-      <Route exact path='/shippingMethods' render={this.renderShippingMethodList} />
-      <Route path='/shippingMethods/:code' component={ShippingMethod} />
-    </Switch>;
+    return (
+      <Routes>
+        <Route index element={<ShippingMethodList />} />
+        <Route path=':code' element={<ShippingMethod />} />
+      </Routes>
+    );
   }
 }

@@ -4,11 +4,9 @@ import CartItem from './CartItem';
 
 export default class CartItemList extends React.Component {
   render() {
-    let items = [];
-
-    for (let item of this.props.items) {
-      items.push(<CartItem item={item} />);
-    }
+    const items = this.props.items.map(item => (
+      <CartItem key={item.code} item={item} />
+    ));
 
     return <ul>{items}</ul>;
   }
